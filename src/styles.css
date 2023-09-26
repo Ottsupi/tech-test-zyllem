@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.article-container{
+    display: flex;
+    justify-content: center;
+}
+
+.article-video {
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+    .iframe-size {
+        height: 40vh;
+    }
+}
+
+.article-list-holder {
+    max-width: 85vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start; /* Adjust as needed */
+    align-items: stretch; /* Adjust as needed */
+    gap: 10px;
+    border: 1px solid; /* Add a border for visual separation */
+    overflow-x: scroll;
+}
+
+.article-item {
+
+}

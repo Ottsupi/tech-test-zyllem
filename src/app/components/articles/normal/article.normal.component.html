@@ -1,0 +1,9 @@
+<div style="max-width: 100%;" (click)="link.click()">
+    <a [href]="article.url" #link>
+        <h2 style="white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;">{{article.title}}</h2>
+        <div [innerHTML]="article.description"></div>
+    </a>
+</div>
+
