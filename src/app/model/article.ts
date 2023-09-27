@@ -21,7 +21,7 @@ export class VideoArticle extends  Article{
 }
 
 export class FeaturedAdArticle extends  Article{
-    adBannerUrl: string;
+    adBannerUrl?: string;
 }
 
 export enum ArticleType {
