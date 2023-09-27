@@ -1,7 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 html, body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
 }
 
 .article-container{
@@ -11,28 +9,38 @@ html, body {
 
 .article-video {
     display: flex;
-    flex-direction: column;
-    height: 45vh;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 20px;
-    .iframe-size {
+    justify-content: center;
+    /* background-color: red; */
+    .article-video-title {
+        text-align: center;
+        margin: 5px 0px;
+    }
+    iframe {
         height: 40vh;
     }
 }
 
-.article-list-holder {
-    max-width: 85vw;
+.h-article-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start; /* Adjust as needed */
-    align-items: stretch; /* Adjust as needed */
-    gap: 10px;
-    border: 1px solid; /* Add a border for visual separation */
-    overflow-x: scroll;
-}
+    overflow-x: auto;
+    /* overflow-y: hidden; */
+    height: 35vh;
 
-.article-item {
 
+    background-color: cyan;
+
+    .article-card {
+        display: flex;
+        flex-direction: column;
+        margin: 4px;
+        width: 320px;
+        height: 90%;
+        
+
+        border: solid black 2px;
+
+        .article-card-image {
+            
+        }
+    }
 }

@@ -6,24 +6,26 @@
     />
   </div>
 
-  <h2>Articles</h2>
-
-  <!-- Feel free to remove this holder -->
-  <h3>Put below a recently published video article given there is one or more video article types in the list.</h3>
-
   <div class="article-video">
       <!-- put the title and the article video component here -->
       <article-video-component [article]="videoArticleHighlight"></article-video-component>
   </div>
 
-  <!-- Feel free to remove this holder -->
-  <h3>List of article goes here: (do not include the recently published video article in the list if you already placed it at the top)</h3>
-
+  <button (click)="testFunk()">test</button>
+  <label for="selectedArticleType">Filter articles by:</label>
+  <select [(ngModel)]="selectedArticleType" (change)="onSelectArticleFilter()" name="selectedArticleType">
+    <option *ngFor="let type of articleTypes | keyvalue" [value]="type.key">{{ type.value }}</option>
+  </select>
+  
+  
   <!-- To put the articles inside this container -->
 
-      <ng-container *ngIf="articles">
-        <article-renderer-component [articles]="articles"></article-renderer-component>
-      </ng-container>
+  <ng-container *ngIf="articles">
+    <div class="h-article-container">
+      <article-renderer-component [articles]="articles"></article-renderer-component>
+    </div>
+    
+  </ng-container>
   
   <div class="bonus-point-container">
     <h3>Instructions:</h3>
