@@ -6,12 +6,14 @@
     />
   </div>
 
+  <!-- <h1>{{ test }}</h1> -->
+
   <div class="article-video">
       <!-- put the title and the article video component here -->
       <article-video-component [article]="videoArticleHighlight"></article-video-component>
   </div>
 
-  <button (click)="testFunk()">test</button>
+  <!-- <button (click)="testFunk()">test</button> -->
   <label for="selectedArticleType">Filter articles by:</label>
   <select [(ngModel)]="selectedArticleType" (change)="onSelectArticleFilter()" name="selectedArticleType">
     <option *ngFor="let type of articleTypes | keyvalue" [value]="type.key">{{ type.value }}</option>
@@ -20,12 +22,11 @@
   
   <!-- To put the articles inside this container -->
 
-  <ng-container *ngIf="articles">
+  <!-- <ng-container *ngIf="articles > 0"> -->
     <div class="h-article-container">
       <article-renderer-component [articles]="articles"></article-renderer-component>
     </div>
-    
-  </ng-container>
+  <!-- </ng-container> -->
   
   <div class="bonus-point-container">
     <h3>Instructions:</h3>

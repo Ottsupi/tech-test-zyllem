@@ -13,6 +13,16 @@ import { ArticleType } from "src/app/model/article";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
+  private _test: string = 'hi';
+  get test() {
+    return this._test;
+  }
+  set test(test) {
+    this._test = test;
+  }
+
+
+  private _articles: Article[] = [];
   articleTypes = ArticleType;
   selectedArticleType: ArticleType;
 
@@ -25,16 +35,11 @@ export class AppComponent implements OnInit {
   videoArticleHighlight: VideoArticle;
 
   get articles() {
-    var filteredArticles: Article[] = [];
-    for (const article of this.results) {
-      if (article !== this.videoArticleHighlight)
-        filteredArticles.push(article);
-    }
-    return filteredArticles;
+    return this._articles;
   }
 
   set articles(articlesList) {
-    this.articles = articlesList;
+    this._articles = [...articlesList];
   }
 
   getVideoHighlight() {
@@ -42,17 +47,20 @@ export class AppComponent implements OnInit {
       if (article.type === 'VIDEO')
         return article;
     }
-    return undefined;
   }
 
   onSelectArticleFilter() {
-    console.log('Selected Article Type:', this.selectedArticleType);
     var filteredArticles: Article[] = [];
     for (const article of this.results) {
       if (article.type == this.selectedArticleType)
         filteredArticles.push(article);
     }
-    console.log('Article List:', filteredArticles);
+    this.articles = filteredArticles;
+    console.log('Selected Article Type:', this.selectedArticleType, '\nArticle List:', this.articles);
+  }
+
+  populateArticles() {
+    return [...this.results];
   }
 
   testFunk() {
@@ -63,17 +71,18 @@ export class AppComponent implements OnInit {
         filteredArticles.push(article);
     }
     this.articles = filteredArticles;
+    this.cdr.markForCheck();
     console.log(this.articles);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.apiService.getArticles()
       .subscribe(result => {
         this.results = result;
+        this.articles = this.populateArticles();
         this.videoArticleHighlight = this.getVideoHighlight();
-        this.cdr.markForCheck();
-        console.log(this.results);
+        this.cdr.detectChanges();
+        console.log(this.articles);
       });
   }
-
 }

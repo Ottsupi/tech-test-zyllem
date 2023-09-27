@@ -23,6 +23,5 @@ export class ArticleVideoComponent extends AbstractArticleComponent implements O
         super();
     }
     ngOnInit(): void {
-        console.log(this.article);
     }
 }
